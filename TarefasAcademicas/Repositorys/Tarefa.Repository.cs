@@ -28,30 +28,62 @@ namespace Repositorys
             pNota.Value = tarefa.Nota;
             pTipo.Value = tarefa.Tipo;
             pTitulo.Value = tarefa.Titulo;
+            OleDbParameter[] parametros = { pDataEntrega, pDescricao, pEntregue, pId, pNota, pTipo, pTitulo };
+            ParametrosList.AddRange(parametros);
         }
 
         public bool Cadastrar()
         {
-            dbConnection.Open();
-
             string query = $"INSERT INTO tbTarefas (titulo, descricao, dataEntrega, tipo) " +
                 $"VALUES ({pTitulo.ParameterName}, {pDescricao.ParameterName}, {pDataEntrega.ParameterName}, {pTipo.ParameterName})";
 
-            var cmd = CmdFactory(query);
+            return Execute(query);
+        }
 
-            cmd.Parameters.Add(pTitulo);
-            cmd.Parameters.Add(pDescricao);
-            cmd.Parameters.Add(pDataEntrega);
-            cmd.Parameters.Add(pTipo);
+        public bool Alterar()
+        {
+            string query = $"UPDATE tbTarefas set titulo = {pTitulo.ParameterName}, descricao = {pDescricao.ParameterName}, " +
+                $"dataEntrega = {pDataEntrega.ParameterName}, tipo = {pTipo.ParameterName}, entregue = {pEntregue.ParameterName}," +
+                $"nota = {pNota.ParameterName} " +
+                $"WHERE id = {pId.ParameterName}";
 
-            try
+            return Execute(query);
+        }
+
+        public bool Excluir()
+        {
+            string query = $"DELETE FROM tbTarefas where id = {pId.ParameterName}";
+
+            return Execute(query);
+        }
+
+        public IEnumerable<Tarefa> ListarTudo()
+        {
+            string query = $"SELECT * FROM tbTarefas order by dataEntrega";
+
+            var dados = ExecuteReader(query);
+
+            return ReaderToList(dados);
+        }
+
+        private List<Tarefa> ReaderToList(OleDbDataReader dados)
+        {
+            var tarefas = new List<Tarefa>();
+
+            while (dados.Read())
             {
-                return (cmd.ExecuteNonQuery() > 0);
+                Tarefa tarefa = new Tarefa();
+                tarefa.DataEntrega = (DateTime)dados["dataEntrega"];
+                tarefa.Descricao = (string)dados["descricao"];
+                tarefa.Entregue = (bool)dados["entregue"];
+                tarefa.Id = (int)dados["id"];
+                tarefa.Nota = (byte)dados["nota"];
+                tarefa.Tipo = (string)dados["tipo"];
+                tarefa.Titulo = (string)dados["titulo"];
+                tarefas.Add(tarefa);
             }
-            finally
-            {
-                dbConnection.Close();
-            }
+
+            return tarefas;
         }
     }
 }

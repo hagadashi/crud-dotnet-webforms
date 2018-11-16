@@ -11,6 +11,7 @@ namespace Repositorys
     public abstract class Repository
     {
         protected OleDbConnection dbConnection;
+        protected List<OleDbParameter> ParametrosList = new List<OleDbParameter>();
 
         protected Repository()
         {
@@ -20,9 +21,45 @@ namespace Repositorys
 
         protected OleDbCommand CmdFactory(string query)
         {
+            if (ParametrosList.Count <= 0) throw new ArgumentException("É obrigatório popular ParametrosList no construtor do Repository");
+
             OleDbCommand cmd = new OleDbCommand(query, dbConnection);
 
+            cmd.Parameters.AddRange(ParametrosList.ToArray());
+
             return cmd;
+        }
+
+        protected bool Execute(string query)
+        {
+            dbConnection.Open();
+
+            var cmd = CmdFactory(query);
+
+            try
+            {
+                return (cmd.ExecuteNonQuery() > 0);
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
+        }
+
+        protected OleDbDataReader ExecuteReader(string query)
+        {
+            dbConnection.Open();
+
+            var cmd = CmdFactory(query);
+
+            try
+            {
+                return cmd.ExecuteReader();
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
         }
     }
 }
