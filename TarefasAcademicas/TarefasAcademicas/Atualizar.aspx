@@ -7,28 +7,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Editar Tarefas</title>
     <style>
-
-        .container{
+        .container {
             width: 450px;
             margin: 0 auto;
-         }
-
-        .container h1{
-            text-align: center;
         }
 
-        .campo{
+            .container h1 {
+                text-align: center;
+            }
+
+        .campo {
             padding: 10px;
         }
 
-        .campo input[type="text"]{
-            float:right;
-            width: 350px;
-        }
+            .campo input[type="text"] {
+                float: right;
+                width: 350px;
+            }
 
-         .campo input[type="submit"]{
-            float:left;
-          }
+            .campo input[type="submit"] {
+                float: left;
+            }
     </style>
 </head>
 <body>
@@ -54,6 +53,11 @@
             <div class="campo">
                 <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>
                 <asp:TextBox TextMode="number" ID="txtNota" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                    ControlToValidate="txtNota" runat="server"
+                    ErrorMessage="Somente Numeros"
+                    ValidationExpression="\d+">
+                </asp:RegularExpressionValidator>
             </div>
             <div class="campo">
                 <asp:Label ID="lblEntregue" runat="server" Text="Entregue:"></asp:Label>
