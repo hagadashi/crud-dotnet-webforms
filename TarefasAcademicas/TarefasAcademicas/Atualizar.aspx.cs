@@ -48,7 +48,7 @@ namespace TarefasAcademicas
                 _tarefa.Tipo = txtTipo.Text;
                 _tarefa.Titulo = txtTitulo.Text;
 
-                var response = _controller.Alterar(_tarefa);
+                bool response = _controller.Alterar(_tarefa);
 
                 if (response)
                 {
