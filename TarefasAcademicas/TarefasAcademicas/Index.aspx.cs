@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Models;
 using Controller;
 
+
 namespace TarefasAcademicas
 {
     public partial class Index : System.Web.UI.Page
@@ -21,23 +22,27 @@ namespace TarefasAcademicas
             TabelaTarefa.DataSource = ds.Tables[0];
 
             TabelaTarefa.DataBind();
+
+
+
         }
 
         protected void CadastrarTarefa_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
 
+
             var NovaTarefa = new Tarefa();
 
             var tarefaController = new TarefaController();
 
             bool cadastrado = tarefaController.Cadastrar(NovaTarefa);
-         
-        }
 
-        protected void TabelaTarefa_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            
+
 
         }
+
+       
     }
 }

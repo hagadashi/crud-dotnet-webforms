@@ -7,10 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title> Cadastro de Tarefas </title>
     <style>
+
+         body {
+            background-color:aliceblue;
+        }
+        
+        h1 {
+            font-family:Arial;
+            font-size:xx-large;
+             text-shadow: 2px 2px 5px cornflowerblue;
+        }
         
         .container{
             width: 450px;
             margin: 0 auto;
+            font-family: Calibri;
          }
 
         .container h1{
@@ -26,9 +37,21 @@
             width: 350px;
         }
            
-         .campo input[type="submit"]{
+          .Btn input[type="submit"]{
             float:right;
-        }
+            display:inline;
+            margin:0 5px;
+            transition-duration: 0.4s;
+            color:black;
+            border-radius:4px;
+            width: 150px;
+            padding: 10px;
+          }
+
+         .Btn input[type="submit"]:hover{
+             background-color:cornflowerblue;
+             color:white;
+         }
 
     </style>
 </head>
@@ -61,7 +84,7 @@
                 <input type="text" id="txtEntregue" />
             </div>
 
-            <div class="campo">
+            <div class="Btn">
                 <input type="submit" title="Cadastrar" value="Concluir cadastro"/>
 
             </div>

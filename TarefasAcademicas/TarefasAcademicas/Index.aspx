@@ -22,7 +22,9 @@
         <asp:GridView ID="TabelaTarefa" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="592px" OnSelectedIndexChanged="TabelaTarefa_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
-                <asp:CommandField HeaderText="Ações" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
+                <asp:CommandField HeaderText="Ações" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" >
+                <ControlStyle BorderStyle="None" />
+                </asp:CommandField>
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
