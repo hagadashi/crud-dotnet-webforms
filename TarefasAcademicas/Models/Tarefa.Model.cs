@@ -15,5 +15,7 @@ namespace Models
         public byte Nota { get; set; }
         public string Tipo { get; set; }
         public string Titulo { get; set; }
+
+        
     }
 }

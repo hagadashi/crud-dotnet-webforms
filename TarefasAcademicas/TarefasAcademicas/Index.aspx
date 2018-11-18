@@ -17,10 +17,13 @@
             <br />
             Lista de Tarefas:</div>
         <p>
-            <asp:LinkButton ID="CadastrarTarefa" runat="server" Font-Names="Calibri" Font-Size="Medium">Cadastrar nova tarefa</asp:LinkButton>
+            <asp:LinkButton ID="CadastrarTarefa" runat="server" Font-Names="Calibri" Font-Size="Medium" OnClick="CadastrarTarefa_Click">Cadastrar nova tarefa</asp:LinkButton>
         </p>
-        <asp:GridView ID="TabelaTarefa" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="774px">
+        <asp:GridView ID="TabelaTarefa" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="592px" OnSelectedIndexChanged="TabelaTarefa_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="#DCDCDC" />
+            <Columns>
+                <asp:CommandField HeaderText="Ações" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
+            </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
@@ -31,7 +34,6 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#000065" />
         </asp:GridView>
-        <asp:Button ID="VerTarefas" runat="server" BorderStyle="Groove" Text="Ver Tarefas" />
     </form>
 </body>
 </html>
