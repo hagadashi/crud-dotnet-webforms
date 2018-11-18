@@ -49,6 +49,11 @@
             <div class="campo">
                 <asp:Label ID="lblDataEntrega" runat="server" Text="Data limite:"></asp:Label>
                 <asp:TextBox TextMode="Date" ID="dtDataEntrega" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                    ControlToValidate="dtDataEntrega" runat="server"
+                    ErrorMessage="Insirá uma data válida"
+                    ValidationExpression="(19|20)[0-9]{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])">
+                </asp:RegularExpressionValidator>
             </div>
             <div class="campo">
                 <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>

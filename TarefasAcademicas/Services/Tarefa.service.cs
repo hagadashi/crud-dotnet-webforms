@@ -23,7 +23,7 @@ namespace Services
 
         public bool Alterar(Tarefa tarefa)
         {
-            if (tarefa.Id <= 0) throw new ArgumentException("Parâmetro Titulo é obrigatório");
+            if (tarefa.Id <= 0) throw new ArgumentException("Parâmetro Id é obrigatório");
             if (String.IsNullOrEmpty(tarefa.Titulo)) throw new ArgumentException("Parâmetro Titulo é obrigatório");
             if (String.IsNullOrEmpty(tarefa.Descricao)) throw new ArgumentException("Parâmetro Descricao é obrigatório");
             if (String.IsNullOrEmpty(tarefa.Tipo)) throw new ArgumentException("Parâmetro Titulo é obrigatório");

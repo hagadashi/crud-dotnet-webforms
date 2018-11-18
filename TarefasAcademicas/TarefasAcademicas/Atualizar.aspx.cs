@@ -19,13 +19,13 @@ namespace TarefasAcademicas
             mock.Id = 1; // mock
             mock.DataEntrega = DateTime.Now;
             mock.Descricao = "Mock1";
-            mock.Entregue = false;
+            mock.Entregue = true;
             mock.Nota = 1;
             mock.Tipo = "Prova";
             mock.Titulo = "Prova Software para Internet";
 
-            tarefa = mock;
-            dtDataEntrega.Text = tarefa.DataEntrega.ToString();
+            tarefa = mock; // substituir mock pela tarefa que será alterada
+            dtDataEntrega.Text = tarefa.DataEntrega.ToString("yyyy-MM-dd");
             txtDescricao.Text = tarefa.Descricao;
             chkEntregue.Checked = tarefa.Entregue;
             txtNota.Text = tarefa.Nota.ToString();
@@ -40,6 +40,7 @@ namespace TarefasAcademicas
                 var _tarefa = new Tarefa();
                 var _controller = new TarefaController();
 
+                _tarefa.Id = tarefa.Id;
                 _tarefa.DataEntrega = DateTime.ParseExact(dtDataEntrega.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                 _tarefa.Descricao = txtDescricao.Text;
                 _tarefa.Entregue = chkEntregue.Checked;
