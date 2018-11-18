@@ -11,7 +11,7 @@ namespace Repositorys
     public abstract class Repository
     {
         protected OleDbConnection dbConnection;
-        protected List<OleDbParameter> ParametrosList = new List<OleDbParameter>();
+        protected OleDbParameter[] Parametros;
 
         protected Repository()
         {
@@ -21,11 +21,11 @@ namespace Repositorys
 
         protected OleDbCommand CmdFactory(string query)
         {
-            if (ParametrosList.Count <= 0) throw new ArgumentException("É obrigatório popular ParametrosList no construtor do Repository");
+            if (Parametros.Length <= 0) throw new ArgumentException("É obrigatório popular ParametrosList no construtor do Repository");
 
             OleDbCommand cmd = new OleDbCommand(query, dbConnection);
 
-            cmd.Parameters.AddRange(ParametrosList.ToArray());
+            cmd.Parameters.AddRange(Parametros);
 
             return cmd;
         }

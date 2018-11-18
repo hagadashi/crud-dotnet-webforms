@@ -4,32 +4,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title> Cadastro de Tarefas </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Cadastro de Tarefas </title>
     <style>
-        
-        .container{
+        .container {
             width: 450px;
             margin: 0 auto;
-         }
-
-        .container h1{
-            text-align: center;
         }
 
-        .campo{
+            .container h1 {
+                text-align: center;
+            }
+
+        .campo {
             padding: 10px;
         }
 
-        .campo input[type="text"]{
-            float:right;
-            width: 350px;
-        }
-           
-         .campo input[type="submit"]{
-            float:right;
-        }
+            .campo input[type="text"] {
+                float: right;
+                width: 350px;
+            }
 
+            .campo input[type="submit"] {
+                float: right;
+            }
     </style>
 </head>
 <body>
@@ -37,33 +35,39 @@
         <div class="container">
             <h1>Cadastro de Tarefas</h1>
             <div class="campo">
-                <label for="txtTitulo">Título:</label>
-                <input type="text" id="txtTitulo" />
+                <asp:Label ID="lblTitulo" runat="server" Text="Título:"></asp:Label>
+                <asp:TextBox ID="txtTitulo" runat="server"></asp:TextBox>
             </div>
             <div class="campo">
-                <label for="txtDescricao">Descrição:</label>
-                <input type="text" id="txtDescricao" />
+                <asp:Label ID="lblDescricao" runat="server" Text="Descrição:"></asp:Label>
+                <asp:TextBox ID="txtDescricao" runat="server"></asp:TextBox>
             </div>
             <div class="campo">
-                <label for="txtTipo">Tipo:</label>
-                <input type="text" id="txtTipo" />
+                <asp:Label ID="lblTipo" runat="server" Text="Tipo:"></asp:Label>
+                <asp:TextBox ID="txtTipo" runat="server"></asp:TextBox>
             </div>
             <div class="campo">
-                <label for="txtData">Data limite: </label>
-                <input type="text" id="txtData" />
+                <asp:Label ID="lblDataEntrega" runat="server" Text="Data limite:"></asp:Label>
+                <asp:TextBox TextMode="Date" ID="dtDataEntrega" runat="server"></asp:TextBox>
             </div>
             <div class="campo">
-                <label for="txtNota">Nota:</label>
-                <input type="text" id="txtNota" />
+                <asp:Label ID="lblNota" runat="server" Text="Nota:"></asp:Label>
+                <asp:TextBox TextMode="number" ID="txtNota" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                    ControlToValidate="txtNota" runat="server"
+                    ErrorMessage="Somente Numeros"
+                    ValidationExpression="\d+">
+                </asp:RegularExpressionValidator>
             </div>
             <div class="campo">
-                <label for="txtEntregue">Entregue:</label>
-                <input type="text" id="txtEntregue" />
+                <asp:Label ID="lblEntregue" runat="server" Text="Entregue:"></asp:Label>
+                <asp:CheckBox ID="chkEntregue" runat="server" />
             </div>
 
             <div class="campo">
-                <input type="submit" title="Cadastrar" value="Concluir cadastro"/>
-
+                <br />
+                <asp:Button ID="btnSalvar" runat="server" Text="Salvar" Width="80px" OnClick="btnSalvar_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="80px" />
             </div>
         </div>
     </form>
