@@ -21,6 +21,8 @@ namespace TarefasAcademicas
 
             lista = controller.ListarTudo();
 
+            if (!this.IsPostBack) AlertarTarefasAtrasadas();
+
             TabelaTarefa.DataSource = lista;
 
             TabelaTarefa.DataBind();
@@ -52,6 +54,21 @@ namespace TarefasAcademicas
                 controller.Excluir(tarefa);
 
                 Response.Redirect("~/");
+            }
+        }
+
+        private void AlertarTarefasAtrasadas()
+        {
+            if (lista != null && lista.Any())
+            {
+                foreach (var tarefa in lista)
+                {
+                    if (!tarefa.Entregue && tarefa.DataEntrega < DateTime.Now)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Aviso", "alert('Você possuí tarefas Atrasadas ou para serem entregues hoje! Entregue-as o quanto antes.');", true);
+                        break;
+                    }
+                }
             }
         }
     }
