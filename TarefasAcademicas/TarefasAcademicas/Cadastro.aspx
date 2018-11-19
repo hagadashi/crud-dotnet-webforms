@@ -1,6 +1,71 @@
 ﻿<%@ Page Title="Cadastrar" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cadastro.aspx.cs" Inherits="TarefasAcademicas.Cadastro" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        body {
+            background-color:aliceblue;
+        }
+        
+        h1 {
+            font-family:Arial;
+            font-size:xx-large;
+             text-shadow: 2px 2px 5px cornflowerblue;
+        }
+        
+        .container{
+            width: 450px;
+            margin: 0 auto;
+            font-family: Calibri;
+         }
+
+        .container h1{
+            text-align: center;
+        }
+
+        .campo{
+            padding: 10px;
+        }
+
+        .campo input[type="text"]{
+            float:right;
+            width: 350px;
+        }
+           
+     .btnSalvar input[type="submit"]{
+            float:right;
+            display:inline;
+            margin:0 5px;
+            transition-duration: 0.4s;
+            color:black;
+            border-radius:4px;
+            width: 150px;
+            padding: 10px;
+          }
+
+         .btnSalvar input[type="submit"]:hover{
+             background-color:cornflowerblue;
+             color:white;
+         }
+          .btnCancelar input[type="submit"]{
+            float:right;
+            display:inline;
+            margin:0 5px;
+            transition-duration: 0.4s;
+            color:black;
+            border-radius:4px;
+            width: 150px;
+            padding: 10px;
+          }
+
+         .btnCancelar input[type="submit"]:hover{
+             background-color:cornflowerblue;
+             color:white;
+         }
+
+
+    </style>
+
+    <body>
     <div class="container">
         <h1>Cadastro de Tarefas</h1>
         <div class="campo">
@@ -43,4 +108,5 @@
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="80px" OnClick="btnCancelar_Click" />
         </div>
     </div>
+        </body>
 </asp:Content>
