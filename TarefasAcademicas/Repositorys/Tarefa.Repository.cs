@@ -28,14 +28,15 @@ namespace Repositorys
             pNota.Value = tarefa.Nota;
             pTipo.Value = tarefa.Tipo;
             pTitulo.Value = tarefa.Titulo;
-            OleDbParameter[] parametros = { pDataEntrega, pDescricao, pEntregue, pId, pNota, pTipo, pTitulo };
-            ParametrosList.AddRange(parametros);
         }
 
         public bool Cadastrar()
         {
-            string query = $"INSERT INTO tbTarefas (titulo, descricao, dataEntrega, tipo) " +
-                $"VALUES ({pTitulo.ParameterName}, {pDescricao.ParameterName}, {pDataEntrega.ParameterName}, {pTipo.ParameterName})";
+            string query = $"INSERT INTO tbTarefas (titulo, descricao, dataEntrega, tipo, entregue, nota) " +
+                $"VALUES ({pTitulo.ParameterName}, {pDescricao.ParameterName}, {pDataEntrega.ParameterName}, " +
+                $"{pTipo.ParameterName}, {pEntregue.ParameterName}, {pNota.ParameterName})";
+
+            Parametros = new OleDbParameter[] { pTitulo, pDescricao, pDataEntrega, pTipo, pEntregue, pNota };
 
             return Execute(query);
         }
@@ -47,12 +48,16 @@ namespace Repositorys
                 $"nota = {pNota.ParameterName} " +
                 $"WHERE id = {pId.ParameterName}";
 
+            Parametros = new OleDbParameter[] { pTitulo, pDescricao, pDataEntrega, pTipo, pEntregue, pNota, pId };
+
             return Execute(query);
         }
 
         public bool Excluir()
         {
             string query = $"DELETE FROM tbTarefas where id = {pId.ParameterName}";
+
+            Parametros = new OleDbParameter[] { pId };
 
             return Execute(query);
         }

@@ -26,7 +26,7 @@ namespace Controller
             catch (Exception error)
             {
                 Console.WriteLine($"Erro ao Cadastrar Tarefa! Erro: ", error.Message);
-                return false;
+                throw;
             }
         }
 
@@ -39,7 +39,7 @@ namespace Controller
             catch (Exception error)
             {
                 Console.WriteLine($"Erro ao Alterar Tarefa! Erro: ", error.Message);
-                return false;
+                throw;
             }
         }
 
@@ -52,7 +52,7 @@ namespace Controller
             catch (Exception error)
             {
                 Console.WriteLine($"Erro ao Excluir Tarefa! Erro: ", error.Message);
-                return false;
+                throw;
             }
         }
 
@@ -69,5 +69,4 @@ namespace Controller
             }
         }
     }
-          
 }
