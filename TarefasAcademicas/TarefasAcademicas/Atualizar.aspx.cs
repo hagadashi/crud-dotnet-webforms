@@ -32,12 +32,17 @@ namespace TarefasAcademicas
                 var _controller = new TarefaController();
 
                 _tarefa.Id = tarefa.Id;
-                _tarefa.DataEntrega = DateTime.ParseExact(dtDataEntrega.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                _tarefa.Descricao = txtDescricao.Text;
+                if (!String.IsNullOrEmpty(dtDataEntrega.Text))
+                    _tarefa.DataEntrega = DateTime.ParseExact(dtDataEntrega.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                if (!String.IsNullOrEmpty(txtDescricao.Text))
+                    _tarefa.Descricao = txtDescricao.Text;
                 _tarefa.Entregue = chkEntregue.Checked;
-                _tarefa.Nota = Convert.ToByte(txtNota.Text);
-                _tarefa.Tipo = txtTipo.Text;
-                _tarefa.Titulo = txtTitulo.Text;
+                if (!String.IsNullOrEmpty(txtNota.Text))
+                    _tarefa.Nota = Convert.ToByte(txtNota.Text);
+                if (!String.IsNullOrEmpty(txtTipo.Text))
+                    _tarefa.Tipo = txtTipo.Text;
+                if (!String.IsNullOrEmpty(txtTitulo.Text))
+                    _tarefa.Titulo = txtTitulo.Text;
 
                 bool response = _controller.Alterar(_tarefa);
 

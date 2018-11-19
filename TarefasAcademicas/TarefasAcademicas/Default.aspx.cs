@@ -13,12 +13,13 @@ namespace TarefasAcademicas
     public partial class Default : System.Web.UI.Page
     {
         private IEnumerable<Tarefa> lista;
+        private TarefaController controller;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var _controller = new TarefaController();
+            controller = new TarefaController();
 
-            lista = _controller.ListarTudo();
+            lista = controller.ListarTudo();
 
             TabelaTarefa.DataSource = lista;
 
@@ -32,17 +33,25 @@ namespace TarefasAcademicas
 
         protected void TabelaTarefa_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = TabelaTarefa.Rows[index];
+            var tarefa = lista.SingleOrDefault(x => x.Id.ToString() == row.Cells[1].Text);
+
             if (e.CommandName == "Edit")
             {
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = TabelaTarefa.Rows[index];
-                var tarefa = lista.SingleOrDefault(x => x.Id.ToString() == row.Cells[1].Text);
-
                 if (tarefa == null) throw new Exception("Id Tarefa Não localizado");
 
                 Session["TarefaAtual"] = tarefa;
 
                 Response.Redirect("~/Atualizar");
+            }
+            else if (e.CommandName == "Delete")
+            {
+                if (tarefa == null) throw new Exception("Id Tarefa Não localizado");
+
+                controller.Excluir(tarefa);
+
+                Response.Redirect("~/");
             }
         }
     }

@@ -22,18 +22,24 @@ namespace TarefasAcademicas
                 var _tarefa = new Tarefa();
                 var _controller = new TarefaController();
 
-                _tarefa.DataEntrega = DateTime.ParseExact(dtDataEntrega.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                _tarefa.Descricao = txtDescricao.Text;
+                if (!String.IsNullOrEmpty(dtDataEntrega.Text))
+                    _tarefa.DataEntrega = DateTime.ParseExact(dtDataEntrega.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                if (!String.IsNullOrEmpty(txtDescricao.Text))
+                    _tarefa.Descricao = txtDescricao.Text;
                 _tarefa.Entregue = chkEntregue.Checked;
-                _tarefa.Nota = Convert.ToByte(txtNota.Text);
-                _tarefa.Tipo = txtTipo.Text;
-                _tarefa.Titulo = txtTitulo.Text;
+                if (!String.IsNullOrEmpty(txtNota.Text))
+                    _tarefa.Nota = Convert.ToByte(txtNota.Text);
+                if (!String.IsNullOrEmpty(txtTipo.Text))
+                    _tarefa.Tipo = txtTipo.Text;
+                if (!String.IsNullOrEmpty(txtTitulo.Text))
+                    _tarefa.Titulo = txtTitulo.Text;
 
                 var response = _controller.Cadastrar(_tarefa);
 
                 if (response)
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "Sucesso", "alert('Tarefa Salva com sucesso');", true);
+                    Response.Redirect("~/");
                 }
                 else
                 {
