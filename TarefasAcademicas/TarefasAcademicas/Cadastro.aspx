@@ -41,7 +41,7 @@
         <div class="campo">
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" Width="80px" OnClick="btnSalvar_Click" />
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="80px" />
+            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="80px" OnClick="btnCancelar_Click" />
         </div>
     </div>
 </asp:Content>

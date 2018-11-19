@@ -66,25 +66,50 @@ namespace Repositorys
         {
             string query = $"SELECT * FROM tbTarefas order by dataEntrega";
 
-            var dados = ExecuteReader(query);
+            dbConnection.Open();
 
-            return ReaderToList(dados);
+            var cmd = CmdFactory(query);
+
+            try
+            {
+                var dados = cmd.ExecuteReader();
+
+                return ReaderToList(dados);
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
         }
 
         private List<Tarefa> ReaderToList(OleDbDataReader dados)
         {
             var tarefas = new List<Tarefa>();
 
+            if (!dados.HasRows) return tarefas;
+
             while (dados.Read())
             {
                 Tarefa tarefa = new Tarefa();
-                tarefa.DataEntrega = (DateTime)dados["dataEntrega"];
-                tarefa.Descricao = (string)dados["descricao"];
-                tarefa.Entregue = (bool)dados["entregue"];
-                tarefa.Id = (int)dados["id"];
-                tarefa.Nota = (byte)dados["nota"];
-                tarefa.Tipo = (string)dados["tipo"];
-                tarefa.Titulo = (string)dados["titulo"];
+
+                if (!String.IsNullOrEmpty(dados["dataEntrega"].ToString()))
+                    tarefa.DataEntrega = (DateTime)dados["dataEntrega"];
+                if (!String.IsNullOrEmpty(dados["descricao"].ToString()))
+                    tarefa.Descricao = (string)dados["descricao"];
+                if (!String.IsNullOrEmpty(dados["entregue"].ToString()))
+                    tarefa.Entregue = (bool)dados["entregue"];
+                if (!String.IsNullOrEmpty(dados["id"].ToString()))
+                    tarefa.Id = (int)dados["id"];
+                if (!String.IsNullOrEmpty(dados["nota"].ToString()))
+                {
+                    var a = dados["nota"];
+                    tarefa.Nota = (byte)dados["nota"];
+                }
+                if (!String.IsNullOrEmpty(dados["tipo"].ToString()))
+                    tarefa.Tipo = (string)dados["tipo"];
+                if (!String.IsNullOrEmpty(dados["titulo"].ToString()))
+                    tarefa.Titulo = (string)dados["titulo"];
+
                 tarefas.Add(tarefa);
             }
 

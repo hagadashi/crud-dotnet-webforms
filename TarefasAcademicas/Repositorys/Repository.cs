@@ -21,20 +21,20 @@ namespace Repositorys
 
         protected OleDbCommand CmdFactory(string query)
         {
-            if (Parametros.Length <= 0) throw new ArgumentException("É obrigatório popular ParametrosList no construtor do Repository");
-
             OleDbCommand cmd = new OleDbCommand(query, dbConnection);
-
-            cmd.Parameters.AddRange(Parametros);
 
             return cmd;
         }
 
         protected bool Execute(string query)
         {
+            if (Parametros.Length <= 0) throw new ArgumentException("É obrigatório popular ParametrosList no construtor do Repository");
+
             dbConnection.Open();
 
             var cmd = CmdFactory(query);
+
+            cmd.Parameters.AddRange(Parametros);
 
             try
             {

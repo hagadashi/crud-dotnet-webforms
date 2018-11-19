@@ -15,16 +15,7 @@ namespace TarefasAcademicas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Tarefa mock = new Tarefa();
-            mock.Id = 1; // mock
-            mock.DataEntrega = DateTime.Now;
-            mock.Descricao = "Mock1";
-            mock.Entregue = true;
-            mock.Nota = 1;
-            mock.Tipo = "Prova";
-            mock.Titulo = "Prova Software para Internet";
-
-            tarefa = mock; // substituir mock pela tarefa que será alterada
+            tarefa = (Tarefa)Session["TarefaAtual"]; // substituir mock pela tarefa que será alterada
             dtDataEntrega.Text = tarefa.DataEntrega.ToString("yyyy-MM-dd");
             txtDescricao.Text = tarefa.Descricao;
             chkEntregue.Checked = tarefa.Entregue;
@@ -63,6 +54,11 @@ namespace TarefasAcademicas
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Erro", $"alert('erro ao tentar executar: {err.Message}');", true);
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/");
         }
     }
 }

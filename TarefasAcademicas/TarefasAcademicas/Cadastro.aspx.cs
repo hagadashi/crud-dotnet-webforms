@@ -17,7 +17,6 @@ namespace TarefasAcademicas
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-
             try
             {
                 var _tarefa = new Tarefa();
@@ -45,6 +44,11 @@ namespace TarefasAcademicas
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Erro", $"alert('erro ao tentar executar: {err.Message}');", true);
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/");
         }
     }
 }
