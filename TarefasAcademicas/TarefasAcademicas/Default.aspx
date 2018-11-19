@@ -1,17 +1,27 @@
 ﻿<%@ Page Title="Tarefas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TarefasAcademicas.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+
+        body {
+            background-color:aliceblue;
+        }
+
+        .CadastrarTarefa {
+            float:left;
+        }
+
+    </style>
+    <body>
     <asp:Panel ID="Banner" runat="server" BackColor="#CCCCFF" BorderColor="#999999" BorderStyle="Outset" Font-Names="Calibri" Font-Size="Larger" ForeColor="Black" Height="96px">
-        &nbsp;&nbsp; Olá, aluno!<br />
-        <br />
-        &nbsp; Seja bem-vindo ao Sistema de Controle de Tarefas.
+        &nbsp;&nbsp; Olá, aluno!<br /> &nbsp;&nbsp; Seja bem-vindo ao Sistema de Controle de Tarefas.
     </asp:Panel>
-    <div id="Textbox" aria-expanded="false" aria-live="off" style="font-family: Calibri; font-size: x-large; height: 54px;">
+    <div id="Textbox" aria-expanded="false" aria-live="off" style="font-family: Calibri; font-size: x-large; height: 114px;">
         <br />
         Lista de Tarefas:
     </div>
     <p>
-        <asp:LinkButton ID="CadastrarTarefa" runat="server" Font-Names="Calibri" Font-Size="Medium" OnClick="CadastrarTarefa_Click">Cadastrar nova tarefa</asp:LinkButton>
+        <asp:LinkButton id="CadastrarTarefa" runat="server" Font-Names="Calibri" Font-Size="Medium" OnClick="CadastrarTarefa_Click">Cadastrar nova tarefa</asp:LinkButton>
     </p>
     <asp:GridView ID="TabelaTarefa" runat="server" DataKeyNames="Id" BackColor="White" BorderColor="#999999" BorderStyle="None"
         BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="592px" AutoGenerateColumns="false" OnRowCommand="TabelaTarefa_RowCommand">
@@ -36,4 +46,5 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#000065" />
     </asp:GridView>
+    </body>
 </asp:Content>

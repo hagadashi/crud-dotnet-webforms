@@ -24,6 +24,7 @@
 
         .campo{
             padding: 10px;
+            margin-left:20px;
         }
 
         .campo input[type="text"]{
@@ -31,7 +32,7 @@
             width: 350px;
         }
            
-     .btnSalvar input[type="submit"]{
+     .btnSalvar{
             float:right;
             display:inline;
             margin:0 5px;
@@ -42,11 +43,11 @@
             padding: 10px;
           }
 
-         .btnSalvar input[type="submit"]:hover{
+         .btnSalvar:hover{
              background-color:cornflowerblue;
              color:white;
          }
-          .btnCancelar input[type="submit"]{
+          .btnCancelar {
             float:right;
             display:inline;
             margin:0 5px;
@@ -57,7 +58,7 @@
             padding: 10px;
           }
 
-         .btnCancelar input[type="submit"]:hover{
+         .btnCancelar:hover{
              background-color:cornflowerblue;
              color:white;
          }
@@ -85,7 +86,7 @@
             <asp:TextBox TextMode="Date" ID="dtDataEntrega" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
                 ControlToValidate="dtDataEntrega" runat="server"
-                ErrorMessage="Insirá uma data válida"
+                ErrorMessage="Insira uma data válida"
                 ValidationExpression="(19|20)[0-9]{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])">
             </asp:RegularExpressionValidator>
         </div>
@@ -104,8 +105,8 @@
         </div>
         <div class="campo">
             <br />
-            <asp:Button ID="btnSalvar" runat="server" Text="Salvar" Width="80px" OnClick="btnSalvar_Click" />
-            <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" Width="80px" OnClick="btnCancelar_Click" />
+            <asp:Button ID="btnSalvar" runat="server" CssClass="btnSalvar" Text="Salvar" Width="80px" OnClick="btnSalvar_Click" />
+            <asp:Button ID="btnCancelar" runat="server" CssClass="btnCancelar" Text="Cancelar" Width="80px" OnClick="btnCancelar_Click" />
         </div>
     </div>
         </body>
