@@ -37,7 +37,6 @@
             <asp:Label ID="lblEntregue" runat="server" Text="Entregue:"></asp:Label>
             <asp:CheckBox ID="chkEntregue" runat="server" />
         </div>
-
         <div class="campo">
             <br />
             <asp:Button ID="btnSalvar" runat="server" Text="Salvar" Width="80px" OnClick="btnSalvar_Click" />
