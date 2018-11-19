@@ -46,13 +46,9 @@ namespace TarefasAcademicas
             }
         }
 
-<<<<<<< HEAD
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/");
         }
-=======
-        
->>>>>>> cfbd535ff75001c44a4b71f1fb3b4f95d3def9e1
     }
 }
