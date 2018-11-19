@@ -15,13 +15,17 @@ namespace TarefasAcademicas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            tarefa = (Tarefa)Session["TarefaAtual"]; // substituir mock pela tarefa que será alterada
-            dtDataEntrega.Text = tarefa.DataEntrega.ToString("yyyy-MM-dd");
-            txtDescricao.Text = tarefa.Descricao;
-            chkEntregue.Checked = tarefa.Entregue;
-            txtNota.Text = tarefa.Nota.ToString();
-            txtTipo.Text = tarefa.Tipo;
-            txtTitulo.Text = tarefa.Titulo;
+            tarefa = (Tarefa)Session["TarefaAtual"];
+
+            if (!this.IsPostBack)
+            {
+                dtDataEntrega.Text = tarefa.DataEntrega.ToString("yyyy-MM-dd");
+                txtDescricao.Text = tarefa.Descricao;
+                chkEntregue.Checked = tarefa.Entregue;
+                txtNota.Text = tarefa.Nota.ToString();
+                txtTipo.Text = tarefa.Tipo;
+                txtTitulo.Text = tarefa.Titulo;
+            }
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
@@ -49,6 +53,7 @@ namespace TarefasAcademicas
                 if (response)
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "Sucesso", "alert('Tarefa Atualizada com sucesso');", true);
+                    Response.Redirect("~/");
                 }
                 else
                 {
