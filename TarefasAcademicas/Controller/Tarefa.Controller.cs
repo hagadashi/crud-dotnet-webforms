@@ -25,8 +25,47 @@ namespace Controller
             }
             catch (Exception error)
             {
-                Console.WriteLine($"Erro ao Cadastrar Tarefa! Erro ", error.Message);
-                return false;
+                Console.WriteLine($"Erro ao Cadastrar Tarefa! Erro: ", error.Message);
+                throw;
+            }
+        }
+
+        public bool Alterar(Tarefa tarefa)
+        {
+            try
+            {
+                return service.Alterar(tarefa);
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine($"Erro ao Alterar Tarefa! Erro: ", error.Message);
+                throw;
+            }
+        }
+
+        public bool Excluir(Tarefa tarefa)
+        {
+            try
+            {
+                return service.Excluir(tarefa);
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine($"Erro ao Excluir Tarefa! Erro: ", error.Message);
+                throw;
+            }
+        }
+
+        public IEnumerable<Tarefa> ListarTudo()
+        {
+            try
+            {
+                return service.ListarTudo();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine($"Erro ao Listar todas as Tarefas! Erro: ", error.Message);
+                return new List<Tarefa>();
             }
         }
     }

@@ -1,42 +1,50 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TarefasAcademicas._Default" %>
+﻿<%@ Page Title="Tarefas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TarefasAcademicas.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        body {
+            background-color:aliceblue;
+        }
+
+        .CadastrarTarefa {
+            float:left;
+        }
+
+    </style>
+    <body>
+    <asp:Panel ID="Banner" runat="server" BackColor="#CCCCFF" BorderColor="#999999" BorderStyle="Outset" Font-Names="Calibri" Font-Size="Larger" ForeColor="Black" Height="96px">
+        &nbsp;&nbsp; Olá, aluno!<br /> &nbsp;&nbsp; Seja bem-vindo ao Sistema de Controle de Tarefas.
+    </asp:Panel>
+    <div id="Textbox" aria-expanded="false" aria-live="off" style="font-family: Calibri; font-size: x-large; height: 114px;">
+        <br />
+        Lista de Tarefas:
     </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
-
+    <p>
+        <asp:LinkButton id="CadastrarTarefa" runat="server" Font-Names="Calibri" Font-Size="Medium" OnClick="CadastrarTarefa_Click">Cadastrar nova tarefa</asp:LinkButton>
+    </p>
+    <asp:GridView ID="TabelaTarefa" runat="server" DataKeyNames="Id" BackColor="White" BorderColor="#999999" BorderStyle="None"
+        BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="592px" AutoGenerateColumns="false" OnRowCommand="TabelaTarefa_RowCommand">
+        <AlternatingRowStyle BackColor="#DCDCDC" />
+        <Columns>
+            <asp:CommandField HeaderText="Ações" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
+            <asp:BoundField DataField="Id" HeaderText="Codigo" />
+            <asp:BoundField DataField="Titulo" HeaderText="Título" />
+            <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
+            <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+            <asp:BoundField DataField="DataEntrega" HeaderText="Data de Entrega" />
+            <asp:BoundField DataField="Entregue" HeaderText="Entregue" />
+            <asp:BoundField DataField="Nota" HeaderText="Nota" />
+        </Columns>
+        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+        <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
+        <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#0000A9" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#000065" />
+    </asp:GridView>
+    </body>
 </asp:Content>

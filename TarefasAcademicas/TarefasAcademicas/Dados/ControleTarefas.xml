@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tarefas>
+  <Tarefa>
+    <Id>1</Id>
+    <Titulo>Tarefa 1</Titulo>
+    <Descrição>PIM finalizado</Descrição>
+    <Tipo>PIM VIII</Tipo>
+    <DataEntrega>19/11/2018</DataEntrega>
+    <Nota>10</Nota>
+    <Entregue>Sim</Entregue>  
+  </Tarefa>  
+  <Tarefa>
+    <Id>2</Id>
+    <Titulo>Tarefa 2</Titulo>
+    <Descrição>PIM finalizado</Descrição>
+    <Tipo>PIM VIII</Tipo>
+    <DataEntrega>19/11/2018</DataEntrega>
+    <Nota>10</Nota>
+    <Entregue>Sim</Entregue>  
+  </Tarefa>
+  <Tarefa>
+    <Id>3</Id>
+    <Titulo>Tarefa 3</Titulo>
+    <Descrição>PIM finalizado</Descrição>
+    <Tipo>PIM VIII</Tipo>
+    <DataEntrega>19/11/2018</DataEntrega>
+    <Nota>10</Nota>
+    <Entregue>Sim</Entregue>  
+  </Tarefa>
+  <Tarefa>
+    <Id>4</Id>
+    <Titulo>Tarefa 4</Titulo>
+    <Descrição>PIM finalizado</Descrição>
+    <Tipo>PIM VIII</Tipo>
+    <DataEntrega>19/11/2018</DataEntrega>
+    <Nota>10</Nota>
+    <Entregue>Sim</Entregue>  
+  </Tarefa>
+
+</Tarefas>
